@@ -13,7 +13,6 @@ class TimetableViewController: PFQueryTableViewController, UITextFieldDelegate{
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        self.title = "Timetable"
         var timetable = PFQuery(className: "Timetable")
         var timetableArray:NSMutableArray = []
         timetable.findObjectsInBackgroundWithBlock { (objects:[AnyObject]?, error:NSError?) -> Void in

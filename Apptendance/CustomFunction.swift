@@ -76,4 +76,20 @@ public class CustomFunction:NSDate
         let intakeCode = PFUser.currentUser()!["IntakeCode"] as? String
         return intakeCode!
     }
+    
+    public class func getDayDate() -> String
+    {
+        var dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy"
+        var dateString = dateFormatter.stringFromDate(NSDate())
+        
+        //get the day of the week
+        let dayFormatter = NSDateFormatter()
+        dayFormatter.dateFormat = "EEEE"
+        let dayOfWeekString = dayFormatter.stringFromDate(NSDate())
+        let day = dayOfWeekString.substringToIndex(advance(dayOfWeekString.startIndex, 3))
+        
+        let fullDate = "\(day.uppercaseString) \(dateString)" as String
+        return fullDate
+    }
 }

@@ -36,14 +36,24 @@ class HomeViewController: UIViewController, ESTBeaconManagerDelegate, CLLocation
         locationManager.startMonitoringForRegion(beaconRegion)
         locationManager.startRangingBeaconsInRegion(beaconRegion)
         locationManager.startUpdatingLocation()
-        let time = CustomFunction.getCurrentTime()
-        println(time)
-        let date = CustomFunction.getDate()
-        println(date)
-        let intake = CustomFunction.getCurrentIntake()
-        println(intake)
-        let username = CustomFunction.getUsername()
-        println(username)
+
+        var subjectCodeArray:NSMutableArray = []
+        var query = PFQuery(className: "Timetable")
+        query.whereKey("Intake", equalTo: "UC2F1410ACS")
+        query.whereKey("Day", equalTo: "FRI 22-05-2015")
+        query.whereKey("Time", hasPrefix: "11:10")
+        query.findObjectsInBackgroundWithBlock
+        {
+            (objects:[AnyObject]?, error:NSError?) -> Void in
+            if error == nil
+            {
+                for object in objects! as [AnyObject]
+                {
+                    subjectCodeArray.addObject((object["SubjectCode"] as? String)!)
+                    println(object["SubjectCode"] as? String)
+                }
+            }
+        }
         // Do any additional setup after loading the view.
     }
     
@@ -90,21 +100,39 @@ class HomeViewController: UIViewController, ESTBeaconManagerDelegate, CLLocation
     {
         manager.startRangingBeaconsInRegion(region as! CLBeaconRegion)
         manager.startUpdatingLocation()
-        let time = CustomFunction.getCurrentTime()
-        println(time)
-        let date = CustomFunction.getDate()
-        println(date)
-        let intake = CustomFunction.getCurrentIntake()
-        println(intake)
-        let username = CustomFunction.getUsername()
-        println(username)
+        //let time = CustomFunction.getCurrentTime() //get the current time
+        //println(time)
+        //let date = CustomFunction.getDayDate() //get the day and date WED dd-mm-yyyy
+        //println(date)
+        //let intake = CustomFunction.getCurrentIntake() //get the current intake
+        //println(intake)
+        //let username = CustomFunction.getUsername() //get the current username
+        //println(username)
+        
+        var subjectCode:NSMutableArray = []
         var query = PFQuery(className: "Timetable")
-            
+        query.whereKey("Intake", equalTo: "UC2F1410ACS")
+        query.whereKey("Day", equalTo: "FRI 22-05-2015")
+        query.whereKey("Time", hasPrefix: "11:10")
+        query.findObjectsInBackgroundWithBlock
+        {
+            (objects:[AnyObject]?, error:NSError?) -> Void in
+            if error == nil
+            {
+                println(objects!.count)
+                for object in objects! as [AnyObject]
+                {
+                    subjectCode.addObject((object["SubjectCode"] as? String)!)
+                    println(object["SubjectCode"] as! String)
+                }
+            }
+        }
+//        println(subjectCode.objectAtIndex(0))
 //            let intakeCode = PFUser.currentUser()!["IntakeCode"] as? String
 //            var Attendance = PFUser()
 //            Attendance.username = PFUser.currentUser()?.username
 //            Attendance.setObject(intakeCode!, forKey: "IntakeCode")
-//            sendLocationNotificationMessage("You are in the class", playSound: true)
+            sendLocationNotificationMessage("You are in the class", playSound: true)
     }
     func locationManager(manager: CLLocationManager!,
         didExitRegion region: CLRegion!) {
