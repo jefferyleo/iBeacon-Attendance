@@ -50,7 +50,7 @@ class HomeViewController: UIViewController, ESTBeaconManagerDelegate, CLLocation
                 for object in objects! as [AnyObject]
                 {
                     subjectCodeArray.addObject((object["SubjectCode"] as? String)!)
-                    println(object["SubjectCode"] as? String)
+                    println(object["SubjectCode"] as! String)
                 }
             }
         }
