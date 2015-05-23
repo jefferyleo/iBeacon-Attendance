@@ -18,14 +18,8 @@ class HomeViewController: UIViewController, ESTBeaconManagerDelegate, CLLocation
     var message:String = ""
     var playSound = false
     
-    let colors = [
-        16555: UIColor.purpleColor(),
-        17792: UIColor.cyanColor(),
-        59287: UIColor.greenColor()
-    ]
-    
-    
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         beaconManager.delegate = self
         locationManager.delegate = self
@@ -38,23 +32,51 @@ class HomeViewController: UIViewController, ESTBeaconManagerDelegate, CLLocation
         locationManager.startUpdatingLocation()
 
         var subjectCodeArray:NSMutableArray = []
+        var subjectCode = ""
         var query = PFQuery(className: "Timetable")
         query.whereKey("Intake", equalTo: "UC2F1410ACS")
         query.whereKey("Day", equalTo: "FRI 22-05-2015")
         query.whereKey("Time", hasPrefix: "11:10")
-        query.findObjectsInBackgroundWithBlock
+        query.findObjectsInBackgroundWithBlock //query the Timetable to get the subject that are having now
         {
             (objects:[AnyObject]?, error:NSError?) -> Void in
             if error == nil
             {
                 for object in objects! as [AnyObject]
                 {
-                    subjectCodeArray.addObject((object["SubjectCode"] as? String)!)
-                    println(object["SubjectCode"] as! String)
+                    //get the Current subject
+                    subjectCodeArray.addObject((object["SubjectCode"] as! NSString))
+                    subjectCode = subjectCodeArray[0] as! String
+                }
+                
+                //if no subjectcode inside, means no class currently
+                if subjectCodeArray.count < 1
+                {
+                    
+                }
+                else //got the class, once get into the class, take this attendance
+                {
+                    //send data to the database as attendance
+                    var attendance = PFObject(className: "Attendance")
+                    attendance["Username"] = CustomFunction.getUsername()
+                    attendance["IntakeCode"] = CustomFunction.getCurrentIntake()
+                    attendance["SubjectCode"] = subjectCode
+                    attendance["Date"] = CustomFunction.getDayDate()
+                    attendance["Time"] = CustomFunction.getCurrentTime()
+                    attendance.saveInBackgroundWithBlock({ (success:Bool, error:NSError?) -> Void in
+                        if(success)
+                        {
+                            self.sendLocationNotificationMessage("Your Attendance has been taken!", playSound: true)
+                        }
+                        else
+                        {
+                            self.sendLocationNotificationMessage("Failed to get attendance.", playSound: true)
+                        }
+                    })
                 }
             }
         }
-        // Do any additional setup after loading the view.
+        //println(subjectCodeArray.objectAtIndex (0) as! String)
     }
     
 //    func locationManager(manager: CLLocationManager!, didRangeBeacons beacons: [AnyObject]!, inRegion region: CLBeaconRegion!)
@@ -138,7 +160,7 @@ class HomeViewController: UIViewController, ESTBeaconManagerDelegate, CLLocation
         didExitRegion region: CLRegion!) {
             manager.stopRangingBeaconsInRegion(region as! CLBeaconRegion)
             manager.stopUpdatingLocation()
-           sendLocationNotificationMessage("You exited the class", playSound: true)
+           sendLocationNotificationMessage("You exit the class", playSound: true)
     }
 }
 

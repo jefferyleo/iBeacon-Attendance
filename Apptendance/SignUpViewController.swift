@@ -119,10 +119,10 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
             SwiftSpinner.show("Signing Up...", animated: true)
             var user = PFUser()
             
-            user.username = txtUsername.text
-            user.password = txtPassword.text
-            user.email = txtEmail.text
-            user.setObject(txtIntake.text, forKey: "IntakeCode")
+            user.username = txtUsername.text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+            user.password = txtPassword.text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+            user.email = txtEmail.text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+            user.setObject(txtIntake.text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()), forKey: "IntakeCode")
             
             user.signUpInBackgroundWithBlock
             {
