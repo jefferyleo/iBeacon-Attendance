@@ -264,6 +264,8 @@
                         <segue destination="vXZ-lx-hvc" kind="push" identifier="gotoLogout" id="bS0-8W-Sva"/>
                         <segue destination="rDo-XB-8Zx" kind="relationship" relationship="viewControllers" id="ZdG-9h-lk9"/>
                         <segue destination="6mP-aG-NYh" kind="relationship" relationship="viewControllers" id="cEW-sl-wyf"/>
+                        <segue destination="gdP-wT-RIB" kind="relationship" relationship="viewControllers" id="78c-IF-ZOS"/>
+                        <segue destination="9os-CR-zf2" kind="relationship" relationship="viewControllers" id="osC-eF-9Ag"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8jR-ue-tz2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -289,6 +291,26 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pee-a5-l04" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1518" y="172"/>
+        </scene>
+        <!--History-->
+        <scene sceneID="mDM-Lq-tFu">
+            <objects>
+                <viewController id="gdP-wT-RIB" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Cnf-fs-2G1"/>
+                        <viewControllerLayoutGuide type="bottom" id="ebt-A1-EB6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="k7c-Gu-KJD">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="History" image="clock-32.png" id="Knb-zr-zmp"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wf4-fy-pz7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="933" y="1162"/>
         </scene>
         <!--Timetable-->
         <scene sceneID="hpq-fP-SL1">
@@ -322,7 +344,7 @@
                                             <attributedString key="attributedText">
                                                 <fragment content="Classroom">
                                                     <attributes>
-                                                        <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <font key="NSFont" size="17" name="HelveticaNeue-Bold"/>
                                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                                     </attributes>
@@ -335,7 +357,7 @@
                                             <attributedString key="attributedText">
                                                 <fragment content="SubjectCode">
                                                     <attributes>
-                                                        <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <font key="NSFont" size="17" name="HelveticaNeue"/>
                                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                                     </attributes>
@@ -346,7 +368,7 @@
                                         <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LecturerName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z7C-fe-qLQ">
                                             <rect key="frame" x="11" y="64" width="299" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -366,7 +388,7 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XNo-LN-fog">
                                             <rect key="frame" x="94" y="0.0" width="156" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -387,6 +409,26 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HVr-Qh-oOQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1458" y="861"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="6wm-o0-b0k">
+            <objects>
+                <viewController id="9os-CR-zf2" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vbY-7i-yQg"/>
+                        <viewControllerLayoutGuide type="bottom" id="7Ha-Z5-8Jt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="oQu-8W-TEt">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Settings" image="settings-32.png" id="jMU-Mg-NoA"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CrZ-ub-RGS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1458" y="1548"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="rOA-SC-LsH">
@@ -410,7 +452,9 @@
     </scenes>
     <resources>
         <image name="calendar-32.png" width="32" height="32"/>
+        <image name="clock-32.png" width="32" height="32"/>
         <image name="home-32.png" width="32" height="32"/>
+        <image name="settings-32.png" width="32" height="32"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
@@ -420,5 +464,5 @@
     <inferredMetricsTieBreakers>
         <segue reference="bS0-8W-Sva"/>
     </inferredMetricsTieBreakers>
-    <color key="tintColor" red="1" green="0.63651583030000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+    <color key="tintColor" red="0.22764130087365864" green="0.75968147497014271" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>

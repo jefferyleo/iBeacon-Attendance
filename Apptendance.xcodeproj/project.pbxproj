@@ -42,9 +42,10 @@
 		E6C8DBEA1ACAE52300F7F113 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C8DBE91ACAE52300F7F113 /* InfoViewController.swift */; };
 		E6C8DBF11ACBE97E00F7F113 /* calendar-32.png in Resources */ = {isa = PBXBuildFile; fileRef = E6C8DBEF1ACBE97E00F7F113 /* calendar-32.png */; };
 		E6C8DBF21ACBE97E00F7F113 /* home-32.png in Resources */ = {isa = PBXBuildFile; fileRef = E6C8DBF01ACBE97E00F7F113 /* home-32.png */; };
-		E6C8DBF61ACC5ECD00F7F113 /* settings-32.png in Resources */ = {isa = PBXBuildFile; fileRef = E6C8DBF51ACC5ECD00F7F113 /* settings-32.png */; };
 		E6F825401AECE556009B68B0 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F8253F1AECE556009B68B0 /* HomeViewController.swift */; };
 		E6F825421AED0205009B68B0 /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F825411AED0205009B68B0 /* MainMenuViewController.swift */; };
+		E6FDA0C81B10D94800C35A41 /* clock-32.png in Resources */ = {isa = PBXBuildFile; fileRef = E6FDA0C61B10D94800C35A41 /* clock-32.png */; };
+		E6FDA0C91B10D94800C35A41 /* settings-32.png in Resources */ = {isa = PBXBuildFile; fileRef = E6FDA0C71B10D94800C35A41 /* settings-32.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -151,9 +152,10 @@
 		E6C8DBE91ACAE52300F7F113 /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		E6C8DBEF1ACBE97E00F7F113 /* calendar-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendar-32.png"; sourceTree = "<group>"; };
 		E6C8DBF01ACBE97E00F7F113 /* home-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home-32.png"; sourceTree = "<group>"; };
-		E6C8DBF51ACC5ECD00F7F113 /* settings-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "settings-32.png"; path = "../../../Desktop/settings-32.png"; sourceTree = "<group>"; };
 		E6F8253F1AECE556009B68B0 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		E6F825411AED0205009B68B0 /* MainMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
+		E6FDA0C61B10D94800C35A41 /* clock-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-32.png"; sourceTree = "<group>"; };
+		E6FDA0C71B10D94800C35A41 /* settings-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings-32.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -288,7 +290,8 @@
 		E6C8DBC31ACAD56D00F7F113 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				E6C8DBF51ACC5ECD00F7F113 /* settings-32.png */,
+				E6FDA0C61B10D94800C35A41 /* clock-32.png */,
+				E6FDA0C71B10D94800C35A41 /* settings-32.png */,
 				E6C8DBEF1ACBE97E00F7F113 /* calendar-32.png */,
 				E6C8DBF01ACBE97E00F7F113 /* home-32.png */,
 				E6C8DBC41ACAD56D00F7F113 /* Info.plist */,
@@ -447,11 +450,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				E6C8DBF21ACBE97E00F7F113 /* home-32.png in Resources */,
+				E6FDA0C81B10D94800C35A41 /* clock-32.png in Resources */,
 				E6C8DBCB1ACAD56D00F7F113 /* Main.storyboard in Resources */,
 				E6C8DBD01ACAD56D00F7F113 /* LaunchScreen.xib in Resources */,
 				E6C8DBF11ACBE97E00F7F113 /* calendar-32.png in Resources */,
+				E6FDA0C91B10D94800C35A41 /* settings-32.png in Resources */,
 				E6C8DBCD1ACAD56D00F7F113 /* Images.xcassets in Resources */,
-				E6C8DBF61ACC5ECD00F7F113 /* settings-32.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

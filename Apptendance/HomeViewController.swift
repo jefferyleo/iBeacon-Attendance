@@ -50,9 +50,10 @@ class HomeViewController: UIViewController, ESTBeaconManagerDelegate, CLLocation
                 }
                 
                 //if no subjectcode inside, means no class currently
-                if subjectCodeArray.count < 1
+                if subjectCodeArray.count == 0
                 {
                     
+                    self.sendLocationNotificationMessage("You have no class currently", playSound: true)
                 }
                 else //got the class, once get into the class, take this attendance
                 {
