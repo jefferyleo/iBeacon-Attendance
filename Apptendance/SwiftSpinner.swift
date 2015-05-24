@@ -58,7 +58,7 @@ public class SwiftSpinner: UIView {
         outerCircle.strokeEnd = 0.45
         outerCircle.lineCap = kCALineCapRound
         outerCircle.fillColor = UIColor.clearColor().CGColor
-        outerCircle.strokeColor = UIColor.whiteColor().CGColor
+        outerCircle.strokeColor = UIColor(red: 58.0/255.0, green: 194.0/255.0, blue: 255.0/255.0, alpha: 1.0).CGColor
         outerCircleView.layer.addSublayer(outerCircle)
         
         outerCircle.strokeStart = 0.0

@@ -42,6 +42,8 @@
 		E6C8DBEA1ACAE52300F7F113 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C8DBE91ACAE52300F7F113 /* InfoViewController.swift */; };
 		E6C8DBF11ACBE97E00F7F113 /* calendar-32.png in Resources */ = {isa = PBXBuildFile; fileRef = E6C8DBEF1ACBE97E00F7F113 /* calendar-32.png */; };
 		E6C8DBF21ACBE97E00F7F113 /* home-32.png in Resources */ = {isa = PBXBuildFile; fileRef = E6C8DBF01ACBE97E00F7F113 /* home-32.png */; };
+		E6E470491B12298E00301ADA /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E470481B12298E00301ADA /* SettingViewController.swift */; };
+		E6E470521B12344000301ADA /* LegacyAgreementController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E470511B12344000301ADA /* LegacyAgreementController.swift */; };
 		E6F825401AECE556009B68B0 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F8253F1AECE556009B68B0 /* HomeViewController.swift */; };
 		E6F825421AED0205009B68B0 /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F825411AED0205009B68B0 /* MainMenuViewController.swift */; };
 		E6FDA0C81B10D94800C35A41 /* clock-32.png in Resources */ = {isa = PBXBuildFile; fileRef = E6FDA0C61B10D94800C35A41 /* clock-32.png */; };
@@ -152,6 +154,8 @@
 		E6C8DBE91ACAE52300F7F113 /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		E6C8DBEF1ACBE97E00F7F113 /* calendar-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendar-32.png"; sourceTree = "<group>"; };
 		E6C8DBF01ACBE97E00F7F113 /* home-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home-32.png"; sourceTree = "<group>"; };
+		E6E470481B12298E00301ADA /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		E6E470511B12344000301ADA /* LegacyAgreementController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegacyAgreementController.swift; sourceTree = "<group>"; };
 		E6F8253F1AECE556009B68B0 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		E6F825411AED0205009B68B0 /* MainMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
 		E6FDA0C61B10D94800C35A41 /* clock-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-32.png"; sourceTree = "<group>"; };
@@ -283,6 +287,8 @@
 				E62B69661B0366D300635A51 /* TimetableCustomCell.swift */,
 				E62B69681B03960F00635A51 /* TimetableHeaderCell.swift */,
 				E62B697C1B0E451800635A51 /* CustomFunction.swift */,
+				E6E470481B12298E00301ADA /* SettingViewController.swift */,
+				E6E470511B12344000301ADA /* LegacyAgreementController.swift */,
 			);
 			path = Apptendance;
 			sourceTree = "<group>";
@@ -509,6 +515,7 @@
 				E695F1351AFA90C100631A5F /* TimetableViewController.swift in Sources */,
 				E6F825421AED0205009B68B0 /* MainMenuViewController.swift in Sources */,
 				E6631C511AE69D3100980538 /* LoginViewController.swift in Sources */,
+				E6E470521B12344000301ADA /* LegacyAgreementController.swift in Sources */,
 				E6C8DBEA1ACAE52300F7F113 /* InfoViewController.swift in Sources */,
 				E6C8DBC61ACAD56D00F7F113 /* AppDelegate.swift in Sources */,
 				E62B69751B0BC48000635A51 /* SwiftSpinner.swift in Sources */,
@@ -517,6 +524,7 @@
 				E62B69691B03960F00635A51 /* TimetableHeaderCell.swift in Sources */,
 				E62B69671B0366D300635A51 /* TimetableCustomCell.swift in Sources */,
 				E6F825401AECE556009B68B0 /* HomeViewController.swift in Sources */,
+				E6E470491B12298E00301ADA /* SettingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

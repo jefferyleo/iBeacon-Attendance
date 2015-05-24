@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 //        username.setObject("jeff", forKey: "name")
 //        username.setObject("jeff", forKey: "password")
 //        username.save()
-        UINavigationBar.appearance().barTintColor = UIColor.orangeColor() //(red: 234.0/255.0, green: 46.0/255.0, blue: 73.0/255.0, alpha: 1.0)
+        UINavigationBar.appearance().barTintColor = UIColor(red: 58.0/255.0, green: 194.0/255.0, blue: 255.0/255.0, alpha: 1.0)
         UINavigationBar.appearance().tintColor = UIColor.whiteColor()
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
 //        let request = Alamofire.download(.GET, "http://webspace.apiit.edu.my/intake-timetable/download_timetable/timetableCSV.zip", { (temporaryURL, response) in

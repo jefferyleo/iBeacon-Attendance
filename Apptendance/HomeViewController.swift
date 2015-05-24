@@ -7,16 +7,24 @@
 //
 
 import UIKit
+import CoreLocation
+import CoreBluetooth
 
-class HomeViewController: UIViewController, ESTBeaconManagerDelegate, CLLocationManagerDelegate {
+class HomeViewController: UIViewController, ESTBeaconManagerDelegate, CLLocationManagerDelegate, CBPeripheralManagerDelegate {
 
     let locationManager = CLLocationManager()
     let beaconManager = ESTBeaconManager()
+    let beaconRegion = CLBeaconRegion (proximityUUID: NSUUID(UUIDString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D"), identifier: "Apptendance")
     let beacon = CLBeacon()
-    let beaconRegion = CLBeaconRegion(
-        proximityUUID: NSUUID(UUIDString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D"),identifier: "Apptendance")
+    
+    @IBOutlet weak var lblClassStatus: UILabel!
+    @IBOutlet weak var lblAttendance: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var bluetoothMessage: UILabel!
+
     var message:String = ""
     var playSound = false
+    var bluetooth: CBPeripheralManager!
     
     override func viewDidLoad()
     {
@@ -27,80 +35,16 @@ class HomeViewController: UIViewController, ESTBeaconManagerDelegate, CLLocation
         {
             locationManager.requestAlwaysAuthorization()
         }
+        bluetooth = CBPeripheralManager(delegate: self, queue: nil, options: nil)
         locationManager.startMonitoringForRegion(beaconRegion)
         locationManager.startRangingBeaconsInRegion(beaconRegion)
         locationManager.startUpdatingLocation()
+        lblClassStatus.text = "Finding Classroom..."
+        lblAttendance.text = "Waiting to take Attendance"
+        activityIndicator.startAnimating()
 
-        var subjectCodeArray:NSMutableArray = []
-        var subjectCode = ""
-        var query = PFQuery(className: "Timetable")
-        query.whereKey("Intake", equalTo: "UC2F1410ACS")
-        query.whereKey("Day", equalTo: "FRI 22-05-2015")
-        query.whereKey("Time", hasPrefix: "11:10")
-        query.findObjectsInBackgroundWithBlock //query the Timetable to get the subject that are having now
-        {
-            (objects:[AnyObject]?, error:NSError?) -> Void in
-            if error == nil
-            {
-                for object in objects! as [AnyObject]
-                {
-                    //get the Current subject
-                    subjectCodeArray.addObject((object["SubjectCode"] as! NSString))
-                    subjectCode = subjectCodeArray[0] as! String
-                }
-                
-                //if no subjectcode inside, means no class currently
-                if subjectCodeArray.count == 0
-                {
-                    
-                    self.sendLocationNotificationMessage("You have no class currently", playSound: true)
-                }
-                else //got the class, once get into the class, take this attendance
-                {
-                    //send data to the database as attendance
-                    var attendance = PFObject(className: "Attendance")
-                    attendance["Username"] = CustomFunction.getUsername()
-                    attendance["IntakeCode"] = CustomFunction.getCurrentIntake()
-                    attendance["SubjectCode"] = subjectCode
-                    attendance["Date"] = CustomFunction.getDayDate()
-                    attendance["Time"] = CustomFunction.getCurrentTime()
-                    attendance.saveInBackgroundWithBlock({ (success:Bool, error:NSError?) -> Void in
-                        if(success)
-                        {
-                            self.sendLocationNotificationMessage("Your Attendance has been taken!", playSound: true)
-                        }
-                        else
-                        {
-                            self.sendLocationNotificationMessage("Failed to get attendance.", playSound: true)
-                        }
-                    })
-                }
-            }
-        }
-        //println(subjectCodeArray.objectAtIndex (0) as! String)
     }
-    
-//    func locationManager(manager: CLLocationManager!, didRangeBeacons beacons: [AnyObject]!, inRegion region: CLBeaconRegion!)
-//    {
-//        let knownBeacons = beacons.filter{$0.proximity != CLProximity.Unknown}
-//        let closestBeacon = knownBeacons[0] as! CLBeacon
-////        if(knownBeacons.count > 0)
-////        {
-////            self.view.backgroundColor =  self.colors[closestBeacon.minor.integerValue]
-////            message = "Detected Beacon"
-////            playSound = true
-////        }
-//        if(knownBeacons.count > 0)
-//        {
-//            if(closestBeacon.minor.integerValue == 17792)
-//            {
-//                message = "Cyan color Spotted"
-//                playSound = true
-//            }
-//        }
-//        
-//        sendLocationNotificationMessage(message, playSound: playSound)
-//    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -123,45 +67,108 @@ class HomeViewController: UIViewController, ESTBeaconManagerDelegate, CLLocation
     {
         manager.startRangingBeaconsInRegion(region as! CLBeaconRegion)
         manager.startUpdatingLocation()
-        //let time = CustomFunction.getCurrentTime() //get the current time
-        //println(time)
-        //let date = CustomFunction.getDayDate() //get the day and date WED dd-mm-yyyy
-        //println(date)
-        //let intake = CustomFunction.getCurrentIntake() //get the current intake
-        //println(intake)
-        //let username = CustomFunction.getUsername() //get the current username
-        //println(username)
+        let major:CLBeaconMajorValue = UInt16(2)
+        let minor:CLBeaconMinorValue = UInt16(59287)
+        //set this beacon is belong to which class
+        let beaconRegion = CLBeaconRegion (proximityUUID: NSUUID(UUIDString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D"), major: CLBeaconMajorValue(), minor: CLBeaconMinorValue(), identifier: "LAB-2")
         
-        var subjectCode:NSMutableArray = []
-        var query = PFQuery(className: "Timetable")
-        query.whereKey("Intake", equalTo: "UC2F1410ACS")
-        query.whereKey("Day", equalTo: "FRI 22-05-2015")
-        query.whereKey("Time", hasPrefix: "11:10")
-        query.findObjectsInBackgroundWithBlock
+        lblClassStatus.text = "You are in the class"
+        lblClassStatus.textColor = UIColor.greenColor()
+        activityIndicator.stopAnimating()
+        sendLocationNotificationMessage("You are in the class", playSound: true)
+        
+        if bluetooth.state == CBPeripheralManagerState.PoweredOn
         {
-            (objects:[AnyObject]?, error:NSError?) -> Void in
-            if error == nil
-            {
-                println(objects!.count)
-                for object in objects! as [AnyObject]
+            var subjectCodeArray:NSMutableArray = []
+            var subjectCode = ""
+            var query = PFQuery(className: "Timetable")
+            query.whereKey("Intake", equalTo: CustomFunction.getCurrentIntake())
+            query.whereKey("Day", equalTo: CustomFunction.getDayDate())
+            query.whereKey("Time", hasPrefix: CustomFunction.getCurrentTime())
+            query.whereKey("Room", equalTo: beaconRegion.identifier)
+            query.findObjectsInBackgroundWithBlock //query the Timetable to get the subject that are having now
                 {
-                    subjectCode.addObject((object["SubjectCode"] as? String)!)
-                    println(object["SubjectCode"] as! String)
-                }
+                    (objects:[AnyObject]?, error:NSError?) -> Void in
+                    if error == nil
+                    {
+                        for object in objects! as [AnyObject]
+                        {
+                            //get the Current subject
+                            subjectCodeArray.addObject((object["SubjectCode"] as! NSString))
+                            subjectCode = subjectCodeArray[0] as! String
+                        }
+                        
+                        //if no subjectcode inside, means no class currently
+                        if subjectCodeArray.count == 0
+                        {
+                            self.lblAttendance.text = "You have no class currently"
+                            self.lblAttendance.textColor = UIColor.redColor()
+                            self.sendLocationNotificationMessage("You have no class currently", playSound: true)
+                        }
+                        else //got the class, once get into the class, take this attendance
+                        {
+                            //send data to the database as attendance
+                            var attendance = PFObject(className: "Attendance")
+                            attendance["Username"] = CustomFunction.getUsername()
+                            attendance["IntakeCode"] = CustomFunction.getCurrentIntake()
+                            attendance["SubjectCode"] = subjectCode
+                            attendance["Date"] = CustomFunction.getDayDate()
+                            attendance["Time"] = CustomFunction.getCurrentTime()
+                            attendance.saveInBackgroundWithBlock({ (success:Bool, error:NSError?) -> Void in
+                                if(success) //student data update successfully into attendance
+                                {
+                                    self.lblAttendance.text = "Your Attendance has been taken!"
+                                    self.lblAttendance.textColor = UIColor.greenColor()
+                                    self.sendLocationNotificationMessage("Your Attendance has been taken!", playSound: true)
+                                }
+                                else //fail to save the student attendance
+                                {
+                                    self.lblAttendance.text = "Failed to get attendance."
+                                    self.lblAttendance.textColor = UIColor.redColor()
+                                    self.sendLocationNotificationMessage("Failed to get attendance.", playSound: true)
+                                }
+                            })
+                        }
+                    }
             }
         }
-//        println(subjectCode.objectAtIndex(0))
-//            let intakeCode = PFUser.currentUser()!["IntakeCode"] as? String
-//            var Attendance = PFUser()
-//            Attendance.username = PFUser.currentUser()?.username
-//            Attendance.setObject(intakeCode!, forKey: "IntakeCode")
-            sendLocationNotificationMessage("You are in the class", playSound: true)
     }
     func locationManager(manager: CLLocationManager!,
-        didExitRegion region: CLRegion!) {
-            manager.stopRangingBeaconsInRegion(region as! CLBeaconRegion)
-            manager.stopUpdatingLocation()
-           sendLocationNotificationMessage("You exit the class", playSound: true)
+        didExitRegion region: CLRegion!)
+    {
+        manager.stopRangingBeaconsInRegion(region as! CLBeaconRegion)
+        manager.stopUpdatingLocation()
+        lblClassStatus.text = "Finding Classroom..."
+        activityIndicator.startAnimating()
+        sendLocationNotificationMessage("You exit the class", playSound: true)
+    }
+    
+    func peripheralManagerDidUpdateState(peripheral: CBPeripheralManager!)
+    {
+        var statusMessage = ""
+        
+        switch peripheral.state
+        {
+        case CBPeripheralManagerState.PoweredOn:
+            statusMessage = "Bluetooth Status: Turned On"
+            
+        case CBPeripheralManagerState.PoweredOff:
+            statusMessage = "Bluetooth Status: Turned Off"
+            
+        case CBPeripheralManagerState.Resetting:
+            statusMessage = "Bluetooth Status: Resetting"
+            
+        case CBPeripheralManagerState.Unauthorized:
+            statusMessage = "Bluetooth Status: Not Authorized"
+            
+        case CBPeripheralManagerState.Unsupported:
+            statusMessage = "Bluetooth Status: Not Supported"
+            
+        default:
+            statusMessage = "Bluetooth Status: Unknown"
+        }
+        
+        bluetoothMessage.text = statusMessage
     }
 }
 

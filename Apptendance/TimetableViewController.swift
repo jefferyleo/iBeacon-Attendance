@@ -12,6 +12,7 @@ class TimetableViewController: PFQueryTableViewController, UITextFieldDelegate{
     
     override func viewDidLoad()
     {
+        self.navigationController?.navigationBar.translucent = false //to avoid the table view cover by the navigation bar
         super.viewDidLoad()
         var timetable = PFQuery(className: "Timetable")
         var timetableArray:NSMutableArray = []
@@ -143,7 +144,7 @@ class TimetableViewController: PFQueryTableViewController, UITextFieldDelegate{
     
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerCell = tableView.dequeueReusableCellWithIdentifier("HeaderCell") as? TimetableHeaderCell
-        headerCell?.backgroundColor = UIColor.orangeColor()
+        headerCell?.backgroundColor = UIColor(red: 58.0/255.0, green: 194.0/255.0, blue: 255.0/255.0, alpha: 1.0)
         
         //print the whole date
         var dateFormatter = NSDateFormatter()
