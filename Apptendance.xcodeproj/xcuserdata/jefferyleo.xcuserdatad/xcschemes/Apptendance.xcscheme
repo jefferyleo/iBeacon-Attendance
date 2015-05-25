@@ -107,6 +107,7 @@
    </AnalyzeAction>
    <ArchiveAction
       buildConfiguration = "Release"
+      customArchiveName = "Apptendance"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>
