@@ -34,6 +34,7 @@ class HomeViewController: UIViewController, ESTBeaconManagerDelegate, CLLocation
         super.viewDidLoad()
         beaconManager.delegate = self
         locationManager.delegate = self
+        self.navigationController?.navigationBar.topItem?.title = "Attendance"
         if(locationManager.respondsToSelector("requestAlwaysAuthorization"))
         {
             locationManager.requestAlwaysAuthorization()
@@ -68,13 +69,13 @@ class HomeViewController: UIViewController, ESTBeaconManagerDelegate, CLLocation
     func locationManager(manager: CLLocationManager!,
         didEnterRegion region: CLRegion!)
     {
-        manager.startRangingBeaconsInRegion(region as! CLBeaconRegion)
-        manager.startUpdatingLocation()
+        
         let major:CLBeaconMajorValue = UInt16(2)
         let minor:CLBeaconMinorValue = UInt16(59287)
         //set this beacon is belong to which class
         let beaconRegion = CLBeaconRegion (proximityUUID: NSUUID(UUIDString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D"), major: CLBeaconMajorValue(), minor: CLBeaconMinorValue(), identifier: "LAB-2")
-        
+        manager.startRangingBeaconsInRegion(beaconRegion)
+        manager.startUpdatingLocation()
         lblClassStatus.text = "You are in the class"
         lblClassStatus.textColor = UIColor.greenColor()
         activityIndicator.stopAnimating()
@@ -82,61 +83,58 @@ class HomeViewController: UIViewController, ESTBeaconManagerDelegate, CLLocation
         
         if bluetooth.state == CBPeripheralManagerState.PoweredOn
         {
-            if beacon.major.unsignedShortValue == 2 && beacon.minor.unsignedShortValue == 59286
-            {
-                var subjectCodeArray:NSMutableArray = []
-                var subjectCode = ""
-                var query = PFQuery(className: "Timetable")
-                query.whereKey("Intake", equalTo: CustomFunction.getCurrentIntake())
-                query.whereKey("Day", equalTo: CustomFunction.getDayDate())
-                query.whereKey("Time", hasPrefix: CustomFunction.getCurrentTime())
-                query.whereKey("Room", equalTo: beaconRegion.identifier)
-                query.findObjectsInBackgroundWithBlock //query the Timetable to get the subject that are having now
+            var subjectCodeArray:NSMutableArray = []
+            var subjectCode = ""
+            var query = PFQuery(className: "Timetable")
+            query.whereKey("Intake", equalTo: CustomFunction.getCurrentIntake())
+            query.whereKey("Day", equalTo: CustomFunction.getDayDate())
+            query.whereKey("Time", hasPrefix: CustomFunction.getCurrentTime())
+            query.whereKey("Room", equalTo: beaconRegion.identifier)
+            query.findObjectsInBackgroundWithBlock //query the Timetable to get the subject that are having now
+                {
+                    (objects:[AnyObject]?, error:NSError?) -> Void in
+                    if error == nil
                     {
-                        (objects:[AnyObject]?, error:NSError?) -> Void in
-                        if error == nil
+                        for object in objects! as [AnyObject]
                         {
-                            for object in objects! as [AnyObject]
-                            {
-                                //get the Current subject
-                                subjectCodeArray.addObject((object["SubjectCode"] as! NSString))
-                                subjectCode = subjectCodeArray[0] as! String
-                            }
-                            
-                            //if no subjectcode inside, means no class currently
-                            if subjectCodeArray.count == 0
-                            {
-                                self.lblAttendance.text = "You have no class currently"
-                                self.lblAttendance.textColor = UIColor.redColor()
-                                self.sendLocationNotificationMessage("You have no class currently", playSound: true)
-                            }
-                            else //got the class, once get into the class, take this attendance
-                            {
-                                //send data to the database as attendance
-                                var attendance = PFObject(className: "Attendance")
-                                attendance["Username"] = CustomFunction.getUsername()
-                                attendance["IntakeCode"] = CustomFunction.getCurrentIntake()
-                                attendance["SubjectCode"] = subjectCode
-                                attendance["Date"] = CustomFunction.getDayDate()
-                                attendance["Time"] = CustomFunction.getCurrentTime()
-                                attendance.saveInBackgroundWithBlock({ (success:Bool, error:NSError?) -> Void in
-                                    if(success) //student data update successfully into attendance
-                                    {
-                                        self.lblAttendance.text = "Your Attendance has been taken!"
-                                        self.lblAttendance.textColor = UIColor.greenColor()
-                                        self.sendLocationNotificationMessage("Your Attendance has been taken!", playSound: true)
-                                    }
-                                    else //fail to save the student attendance
-                                    {
-                                        self.lblAttendance.text = "Failed to get attendance."
-                                        self.lblAttendance.textColor = UIColor.redColor()
-                                        self.sendLocationNotificationMessage("Failed to get attendance.", playSound: true)
-                                    }
-                                })
-                            }
+                            //get the Current subject
+                            subjectCodeArray.addObject((object["SubjectCode"] as! NSString))
+                            subjectCode = subjectCodeArray[0] as! String
+                        }
+                        
+                        //if no subjectcode inside, means no class currently
+                        if subjectCodeArray.count == 0
+                        {
+                            self.lblAttendance.text = "You have no class currently"
+                            self.lblAttendance.textColor = UIColor.redColor()
+                            self.sendLocationNotificationMessage("You have no class currently", playSound: true)
+                        }
+                        else //got the class, once get into the class, take this attendance
+                        {
+                            //send data to the database as attendance
+                            var attendance = PFObject(className: "Attendance")
+                            attendance["Username"] = CustomFunction.getUsername()
+                            attendance["IntakeCode"] = CustomFunction.getCurrentIntake()
+                            attendance["SubjectCode"] = subjectCode
+                            attendance["Date"] = CustomFunction.getDayDate()
+                            attendance["Time"] = CustomFunction.getCurrentTime()
+                            attendance.saveInBackgroundWithBlock({ (success:Bool, error:NSError?) -> Void in
+                                if(success) //student data update successfully into attendance
+                                {
+                                    self.lblAttendance.text = "Your Attendance has been taken!"
+                                    self.lblAttendance.textColor = UIColor.greenColor()
+                                    self.sendLocationNotificationMessage("Your Attendance has been taken!", playSound: true)
+                                }
+                                else //fail to save the student attendance
+                                {
+                                    self.lblAttendance.text = "Failed to get attendance."
+                                    self.lblAttendance.textColor = UIColor.redColor()
+                                    self.sendLocationNotificationMessage("Failed to get attendance.", playSound: true)
+                                }
+                            })
                         }
                     }
-            }
+                }
         }
     }
     func locationManager(manager: CLLocationManager!,

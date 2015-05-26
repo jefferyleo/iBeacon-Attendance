@@ -17,18 +17,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     var lastProximity: CLProximity?
 
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
+    {
         // Override point for customization after application launch.
         Parse.setApplicationId("Z13dsgbYDYAuxhWGzkM9DYAy8S3jwf3sSFDOpiGs", clientKey: "UdIwAAgpJX28ZfmmVxsScMKvoxyBhW56pRptplSp")
         ESTCloudManager.setupAppID("apptendance", andAppToken: "9ba851760fe314755e1002ca7332e645")
         //allowthe notification
-        if(application.respondsToSelector("registerUserNotificationSettings:")) {
+        if(application.respondsToSelector("registerUserNotificationSettings:"))
+        {
             application.registerUserNotificationSettings(
                 UIUserNotificationSettings(
                     forTypes: UIUserNotificationType.Alert | UIUserNotificationType.Sound,
                     categories: nil
                 )
             )
+        }
+        let currentUser = PFUser.currentUser()
+        if ((currentUser) != nil)
+        {
+            PFUser.logOut()
         }
 //        var username = PFObject(className: "Username")
 //        username.setObject("jeff", forKey: "name")

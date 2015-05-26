@@ -21,7 +21,7 @@ class SettingViewController: UITableViewController, UITableViewDelegate, UITable
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
         let cell = tableView.cellForRowAtIndexPath(indexPath)
-        if cell ==  "Facebook"
+        if cell?.reuseIdentifier ==  "Facebook"
         {
             if SLComposeViewController.isAvailableForServiceType(SLServiceTypeFacebook)
             {
@@ -29,18 +29,18 @@ class SettingViewController: UITableViewController, UITableViewDelegate, UITable
                 fbShare.setInitialText("Apptendance is Awesome!")
                 self.presentViewController(fbShare, animated: true, completion: nil)
             }
-            else
-            {
-                var alert = UIAlertController(title: "Accounts", message: "Please login to Facebook to continue.", preferredStyle: UIAlertControllerStyle.Alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-                self.presentViewController(alert, animated: true, completion: nil)
-            }
+//            else
+//            {
+//                var alert = UIAlertController(title: "Accounts", message: "Please login to Facebook to continue.", preferredStyle: UIAlertControllerStyle.Alert)
+//                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+//                self.presentViewController(alert, animated: true, completion: nil)
+//            }
         }
     }
     
     override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
         let cell = tableView.cellForRowAtIndexPath(indexPath)
-        if cell ==  "Facebook"
+        if cell?.reuseIdentifier ==  "Facebook"
         {
             if SLComposeViewController.isAvailableForServiceType(SLServiceTypeFacebook)
             {
@@ -48,9 +48,22 @@ class SettingViewController: UITableViewController, UITableViewDelegate, UITable
                 fbShare.setInitialText("Apptendance is Awesome!")
                 self.presentViewController(fbShare, animated: true, completion: nil)
             }
-            else
-            {
-                var alert = UIAlertController(title: "Accounts", message: "Please login to Facebook to continue.", preferredStyle: UIAlertControllerStyle.Alert)
+//            else
+//            {
+//                var alert = UIAlertController(title: "Accounts", message: "Please login to Facebook to continue.", preferredStyle: UIAlertControllerStyle.Alert)
+//                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+//                self.presentViewController(alert, animated: true, completion: nil)
+//            }
+        }
+        else if cell?.reuseIdentifier == "Twitter"
+        {
+            if  SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter){
+                
+                var tweetSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
+                tweetSheet.setInitialText("Apptendance is Awesome!")
+                self.presentViewController(tweetSheet, animated: true, completion: nil)
+            } else {
+                var alert = UIAlertController(title: "Accounts", message: "Please login to a Twitter account to share.", preferredStyle: UIAlertControllerStyle.Alert)
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
                 self.presentViewController(alert, animated: true, completion: nil)
             }
