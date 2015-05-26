@@ -83,7 +83,9 @@ class HomeViewController: UIViewController, ESTBeaconManagerDelegate, CLLocation
         if bluetooth.state == CBPeripheralManagerState.PoweredOn
         {
             var subjectCodeArray:NSMutableArray = []
+            var timeArray:NSMutableArray = []
             var subjectCode = ""
+            var time = ""
             var query = PFQuery(className: "Timetable")
             
             //TESTING
@@ -107,6 +109,10 @@ class HomeViewController: UIViewController, ESTBeaconManagerDelegate, CLLocation
                             //get the Current subject
                             subjectCodeArray.addObject((object["SubjectCode"] as! NSString))
                             subjectCode = subjectCodeArray[0] as! String
+                            
+                            //get the current class time
+                            timeArray.addObject(object["Time"] as! NSString)
+                            time = timeArray[0] as! String
                         }
                         
                         //if no subjectcode inside, means no class currently
@@ -124,7 +130,7 @@ class HomeViewController: UIViewController, ESTBeaconManagerDelegate, CLLocation
                             attendance["IntakeCode"] = CustomFunction.getCurrentIntake()
                             attendance["SubjectCode"] = subjectCode
                             attendance["Date"] = CustomFunction.getDayDate()
-                            attendance["Time"] = CustomFunction.getCurrentTime()
+                            attendance["Time"] = time
                             attendance.saveInBackgroundWithBlock({ (success:Bool, error:NSError?) -> Void in
                                 if(success) //student data update successfully into attendance
                                 {
