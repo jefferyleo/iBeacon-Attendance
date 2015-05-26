@@ -8,7 +8,8 @@
 
 import UIKit
 
-class TimetableCustomCell: PFTableViewCell {
+class TimetableCustomCell: PFTableViewCell
+{
 
     @IBOutlet weak var lblTime: UILabel!
     @IBOutlet weak var lblClassroom: UILabel!

@@ -10,8 +10,8 @@ import UIKit
 import CoreLocation
 import CoreBluetooth
 
-class HomeViewController: UIViewController, ESTBeaconManagerDelegate, CLLocationManagerDelegate, CBPeripheralManagerDelegate {
-
+class HomeViewController: UIViewController, ESTBeaconManagerDelegate, CLLocationManagerDelegate, CBPeripheralManagerDelegate
+{
     let locationManager = CLLocationManager()
     let beaconManager = ESTBeaconManager()
     let major:CLBeaconMajorValue = UInt16(2)
@@ -49,7 +49,6 @@ class HomeViewController: UIViewController, ESTBeaconManagerDelegate, CLLocation
 
     }
 
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -73,7 +72,7 @@ class HomeViewController: UIViewController, ESTBeaconManagerDelegate, CLLocation
         let major:CLBeaconMajorValue = UInt16(2)
         let minor:CLBeaconMinorValue = UInt16(59287)
         //set this beacon is belong to which class
-        let beaconRegion = CLBeaconRegion (proximityUUID: NSUUID(UUIDString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D"), major: CLBeaconMajorValue(), minor: CLBeaconMinorValue(), identifier: "LAB-2")
+        let beaconRegion = CLBeaconRegion (proximityUUID: NSUUID(UUIDString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D"), major: CLBeaconMajorValue(), minor: CLBeaconMinorValue(), identifier: "G-1:ROOM-3")
         manager.startRangingBeaconsInRegion(beaconRegion)
         manager.startUpdatingLocation()
         lblClassStatus.text = "You are in the class"
@@ -86,10 +85,18 @@ class HomeViewController: UIViewController, ESTBeaconManagerDelegate, CLLocation
             var subjectCodeArray:NSMutableArray = []
             var subjectCode = ""
             var query = PFQuery(className: "Timetable")
+            
+            //TESTING
             query.whereKey("Intake", equalTo: CustomFunction.getCurrentIntake())
             query.whereKey("Day", equalTo: CustomFunction.getDayDate())
-            query.whereKey("Time", hasPrefix: CustomFunction.getCurrentTime())
+            query.whereKey("Time", containsString: "13:45")
             query.whereKey("Room", equalTo: beaconRegion.identifier)
+//            query.whereKey("Intake", equalTo: CustomFunction.getCurrentIntake())
+//            query.whereKey("Day", equalTo: CustomFunction.getDayDate())
+//            query.whereKey("Time".substringWithRange(Range<String.Index>(start: advance("Time".startIndex, 8), end: advance("Time".endIndex, 0))), greaterThanOrEqualTo: "14:00")
+//            query.whereKey("Time".substringWithRange(Range<String.Index>(start: advance("Time".startIndex, 0), end: advance("Time".startIndex, 4))), lessThanOrEqualTo: "14:00")
+//            query.whereKey("Room", equalTo: beaconRegion.identifier)
+            //TESTING
             query.findObjectsInBackgroundWithBlock //query the Timetable to get the subject that are having now
                 {
                     (objects:[AnyObject]?, error:NSError?) -> Void in
@@ -177,6 +184,7 @@ class HomeViewController: UIViewController, ESTBeaconManagerDelegate, CLLocation
         
         bluetoothMessage.text = statusMessage
     }
+    
 }
 
 extension HomeViewController:CLLocationManagerDelegate

@@ -97,51 +97,8 @@ class TimetableViewController: PFQueryTableViewController, UITextFieldDelegate{
         {
             cell?.lblLecturerName.text = lecturerName
         }
-//        if (cell?.lblLecturerName.text == nil)
-//        {
-//            var alertView = UIAlertView(title: "No scheduled classes on today.", message: "", delegate: self, cancelButtonTitle: "OK")
-//        }
         return cell
     }
-    
-//    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        let displayIntake = PFUser.currentUser()!["IntakeCode"] as? String
-//        
-//        //print the whole date
-//        var dateFormatter = NSDateFormatter()
-//        dateFormatter.dateFormat = "dd-MM-yyyy"
-//        var dateString = dateFormatter.stringFromDate(NSDate())
-//        
-//        //get the day of the week
-//        let dayFormatter = NSDateFormatter()
-//        dayFormatter.dateFormat = "EEEE"
-//        let dayOfWeekString = dayFormatter.stringFromDate(NSDate())
-//        let day = dayOfWeekString.substringToIndex(advance(dayOfWeekString.startIndex, 3))
-//        
-//        var fullDate = "\(day.uppercaseString) \(dateString)"
-//        
-//        var timetable = PFQuery(className: "Timetable")
-//        timetable.whereKey("Intake", equalTo: displayIntake!)
-//        timetable.whereKey("Day", equalTo: fullDate)
-//        
-//        var timetableArray:NSMutableArray = []
-//        timetable.findObjectsInBackgroundWithBlock { (objects:[AnyObject]?, error:NSError?) -> Void in
-//            if error == nil
-//            {
-//                for object in objects! as [AnyObject]
-//                {
-//                    timetableArray.addObject((object["Time"] as? String)!)
-//                }
-//            }
-//        }
-//        if timetableArray.count < 1
-//        {
-//            let alertView = UIAlertView(title: "No Scheduled classes on today.", message: "", delegate: self, cancelButtonTitle: "OK")
-//            alertView.show()
-//        }
-//        //println(timetableArray.count)
-//        return timetableArray.count
-//    }
     
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerCell = tableView.dequeueReusableCellWithIdentifier("HeaderCell") as? TimetableHeaderCell
