@@ -56,9 +56,9 @@ public class CustomFunction:NSDate
     {
 //        let date = NSDate()
 //        let formatter = NSDateFormatter()
-//        formatter.timeStyle = .ShortStyle
-//        var stringValue = formatter.stringFromDate(date)
-//        return stringValue
+//        formatter.dateFormat = "HH:mm"
+//        formatter.stringFromDate(date)
+        
         var dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "HH:mm"
         var dateString = dateFormatter.stringFromDate(NSDate())
@@ -92,4 +92,20 @@ public class CustomFunction:NSDate
         let fullDate = "\(day.uppercaseString) \(dateString)" as String
         return fullDate
     }
+    
+    public class func isEqual (lhs: NSDate, rhs: NSDate) -> Bool
+    {
+    return lhs === rhs || lhs.compare(rhs) == .OrderedSame
+    }
+    
+    public class func isLessThan (lhs: NSDate, rhs: NSDate) -> Bool
+    {
+    return lhs.compare(rhs) == .OrderedAscending
+    }
+    
+    public class func isGreaterThan (lhs: NSDate, rhs: NSDate) -> Bool
+    {
+    return lhs.compare(rhs) == .OrderedDescending
+    }
+
 }
