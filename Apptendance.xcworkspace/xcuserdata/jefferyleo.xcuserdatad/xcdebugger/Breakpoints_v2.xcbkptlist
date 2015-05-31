@@ -106,7 +106,7 @@
                   moduleName = "Apptendance"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jefferyleo/Documents/Apptendance/Apptendance/HomeViewController.swift"
-                  timestampString = "454772128.698695"
+                  timestampString = "454795737.002806"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "182"
@@ -121,7 +121,7 @@
                   moduleName = "Apptendance"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jefferyleo/Documents/Apptendance/Apptendance/HomeViewController.swift"
-                  timestampString = "454772128.698887"
+                  timestampString = "454795737.002957"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "182"
@@ -218,12 +218,12 @@
                   moduleName = "Apptendance"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jefferyleo/Documents/Apptendance/Apptendance/HistoryTableViewController.swift"
-                  timestampString = "454772128.70153"
+                  timestampString = "454795737.006012"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "94"
                   endingLineNumber = "94"
-                  offsetFromSymbolStart = "1781">
+                  offsetFromSymbolStart = "1770">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -233,7 +233,7 @@
                   moduleName = "Apptendance"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jefferyleo/Documents/Apptendance/Apptendance/HistoryTableViewController.swift"
-                  timestampString = "454772128.701646"
+                  timestampString = "454795737.006172"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "95"
@@ -271,38 +271,6 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "95"
             endingLineNumber = "95"
-            landmarkName = "tableView(_:cellForRowAtIndexPath:object:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Apptendance/HistoryTableViewController.swift"
-            timestampString = "454783067.133239"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
-            landmarkName = "tableView(_:cellForRowAtIndexPath:object:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Apptendance/HistoryTableViewController.swift"
-            timestampString = "454783067.133239"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
             landmarkName = "tableView(_:cellForRowAtIndexPath:object:)"
             landmarkType = "5">
          </BreakpointContent>

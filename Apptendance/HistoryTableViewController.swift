@@ -94,21 +94,28 @@ class HistoryTableViewController: PFQueryTableViewController {
         attendanceCount.findObjectsInBackgroundWithBlock { (objects:[AnyObject]?, error:NSError?) -> Void in
             if error == nil
             {
+                var attendanceCountArray:NSMutableArray = []
                 for object in objects! as [AnyObject]
                 {
-                    var attendanceCountArray:NSMutableArray = []
                     attendanceCountArray.removeAllObjects()
-                    attendanceCountArray.addObject(object["SubjectCode"] as! String)
+                    attendanceCountArray.addObject(object)
+                    //attendanceCountArray.addObject(object["SubjectCode"] as! String)
                     println(attendanceCountArray.count)
                     println(object["SubjectCode"] as! String)
-                    cell.lblTotalClass.text = "\(attendanceCountArray.count) / 24"
+                    var total:Int = 0
+                    cell.lblTotalClass.text = "\(total) / 24"
                 }
+                println(attendanceCountArray.count)
             }
         }
+//        var percentage:Double = 0
+//        let totalClass:Int? = cell.lblTotalClass.text?.toInt()
+//        percentage = Double((totalClass! / 24) * 100)
+//        cell.lblPercentage.text = "\(percentage)"
         
         return cell
     }
-    
+
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         var attendance = PFQuery(className: "Attendance")
