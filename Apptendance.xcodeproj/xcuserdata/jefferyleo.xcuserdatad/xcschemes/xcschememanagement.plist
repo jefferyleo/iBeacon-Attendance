@@ -4,10 +4,20 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Apptendance Timetable.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>17</integer>
+		</dict>
 		<key>Apptendance.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>14</integer>
+		</dict>
+		<key>TimetableWidget.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>16</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
@@ -18,6 +28,16 @@
 			<true/>
 		</dict>
 		<key>E6C8DBD41ACAD56D00F7F113</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E6F8500F1B18554200E89BF4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E6F850251B18586D00E89BF4</key>
 		<dict>
 			<key>primary</key>
 			<true/>

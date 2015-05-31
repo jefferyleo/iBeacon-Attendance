@@ -46,6 +46,9 @@
 		E6E470561B1276F200301ADA /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E470551B1276F200301ADA /* FeedbackViewController.swift */; };
 		E6F825401AECE556009B68B0 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F8253F1AECE556009B68B0 /* HomeViewController.swift */; };
 		E6F825421AED0205009B68B0 /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F825411AED0205009B68B0 /* MainMenuViewController.swift */; };
+		E6F850501B19AC0C00E89BF4 /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F8504F1B19AC0C00E89BF4 /* HistoryTableViewController.swift */; };
+		E6F850521B19C47500E89BF4 /* HistoryCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F850511B19C47500E89BF4 /* HistoryCustomCell.swift */; };
+		E6F850541B19C51500E89BF4 /* HistoryHeaderCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F850531B19C51500E89BF4 /* HistoryHeaderCellTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +108,16 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E6F850201B18554400E89BF4 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -156,6 +169,12 @@
 		E6E470551B1276F200301ADA /* FeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
 		E6F8253F1AECE556009B68B0 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		E6F825411AED0205009B68B0 /* MainMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
+		E6F850111B18554300E89BF4 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		E6F850441B18632700E89BF4 /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/../build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
+		E6F8504B1B18643700E89BF4 /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseCrashReporting.framework; path = "../../Desktop/parse-library-1.7.1/ParseCrashReporting.framework"; sourceTree = "<group>"; };
+		E6F8504F1B19AC0C00E89BF4 /* HistoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewController.swift; sourceTree = "<group>"; };
+		E6F850511B19C47500E89BF4 /* HistoryCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryCustomCell.swift; sourceTree = "<group>"; };
+		E6F850531B19C51500E89BF4 /* HistoryHeaderCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryHeaderCellTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,6 +218,8 @@
 		4D43CC3F2F373F5D9B1B2945 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E6F8504B1B18643700E89BF4 /* ParseCrashReporting.framework */,
+				E6F850441B18632700E89BF4 /* libPods.a */,
 				E6E470531B12750C00301ADA /* MessageUI.framework */,
 				E6631C521AE6E0F500980538 /* ParseUI.framework */,
 				E62F8D791ADD3FB4001F794A /* EstimoteSDK.framework */,
@@ -210,6 +231,7 @@
 				E69567FF1AD193D2003A5FA6 /* Parse.framework */,
 				E69567FC1AD15CEC003A5FA6 /* libsqlite3.dylib */,
 				4AC78C9168075B45523AD030 /* libPods.a */,
+				E6F850111B18554300E89BF4 /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -288,6 +310,9 @@
 				E6E470481B12298E00301ADA /* SettingViewController.swift */,
 				E6E470511B12344000301ADA /* LegacyAgreementController.swift */,
 				E6E470551B1276F200301ADA /* FeedbackViewController.swift */,
+				E6F8504F1B19AC0C00E89BF4 /* HistoryTableViewController.swift */,
+				E6F850511B19C47500E89BF4 /* HistoryCustomCell.swift */,
+				E6F850531B19C51500E89BF4 /* HistoryHeaderCellTableViewCell.swift */,
 			);
 			path = Apptendance;
 			sourceTree = "<group>";
@@ -330,6 +355,7 @@
 				E6C8DBBE1ACAD56D00F7F113 /* Resources */,
 				D6D98163F53F28D853FD2BDE /* Copy Pods Resources */,
 				E62B69611B026C8200635A51 /* Embed Frameworks */,
+				E6F850201B18554400E89BF4 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
@@ -517,6 +543,9 @@
 				E62B69671B0366D300635A51 /* TimetableCustomCell.swift in Sources */,
 				E6F825401AECE556009B68B0 /* HomeViewController.swift in Sources */,
 				E6E470491B12298E00301ADA /* SettingViewController.swift in Sources */,
+				E6F850501B19AC0C00E89BF4 /* HistoryTableViewController.swift in Sources */,
+				E6F850541B19C51500E89BF4 /* HistoryHeaderCellTableViewCell.swift in Sources */,
+				E6F850521B19C47500E89BF4 /* HistoryCustomCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

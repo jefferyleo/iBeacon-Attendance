@@ -321,8 +321,8 @@
                         <segue destination="vXZ-lx-hvc" kind="push" identifier="gotoLogout" id="bS0-8W-Sva"/>
                         <segue destination="rDo-XB-8Zx" kind="relationship" relationship="viewControllers" id="ZdG-9h-lk9"/>
                         <segue destination="6mP-aG-NYh" kind="relationship" relationship="viewControllers" id="cEW-sl-wyf"/>
-                        <segue destination="9os-CR-zf2" kind="relationship" relationship="viewControllers" id="osC-eF-9Ag"/>
-                        <segue destination="HlJ-bG-gqF" kind="relationship" relationship="viewControllers" id="F7U-IK-iw1"/>
+                        <segue destination="krV-p8-2MU" kind="relationship" relationship="viewControllers" id="T3G-F4-vYW"/>
+                        <segue destination="HlJ-bG-gqF" kind="relationship" relationship="viewControllers" id="4d8-GY-3t5"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8jR-ue-tz2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -422,26 +422,6 @@
             </objects>
             <point key="canvasLocation" x="505" y="1143"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="EoA-UB-JKS">
-            <objects>
-                <viewController id="H8d-N1-dmN" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="5ua-ZQ-Rzy"/>
-                        <viewControllerLayoutGuide type="bottom" id="bzt-iW-cbm"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="CmK-cr-1x4">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <gestureRecognizers/>
-                    </view>
-                    <navigationItem key="navigationItem" id="ngx-w6-Kcd"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="q6I-BS-6HM" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="505" y="1867"/>
-        </scene>
         <!--Feedback View Controller-->
         <scene sceneID="v81-Y4-AFF">
             <objects>
@@ -502,9 +482,6 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="H8d-N1-dmN" kind="push" id="pqJ-YC-1WS"/>
-                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="zOX-U7-mQy">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -713,24 +690,80 @@
             <point key="canvasLocation" x="1512" y="860"/>
         </scene>
         <!--History-->
-        <scene sceneID="6wm-o0-b0k">
+        <scene sceneID="6By-7e-XO9">
             <objects>
-                <viewController id="9os-CR-zf2" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Shr-eC-d1Q"/>
-                        <viewControllerLayoutGuide type="bottom" id="hUM-C9-Xws"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="oQu-8W-TEt">
+                <tableViewController id="krV-p8-2MU" customClass="HistoryTableViewController" customModule="Apptendance" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="119" sectionHeaderHeight="22" sectionFooterHeight="22" id="tFr-RR-dtO">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="History" image="clock-32.png" id="jMU-Mg-NoA"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="75" id="ocT-b9-ZTe" customClass="HistoryCustomCell" customModule="Apptendance" customModuleProvider="target">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ocT-b9-ZTe" id="6ll-eK-37T">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SubjectCode" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dBf-DM-39k">
+                                            <rect key="frame" x="11" y="8" width="299" height="27"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Attendance" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CqR-PW-Vqc">
+                                            <rect key="frame" x="11" y="43" width="88" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Percentage" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fsK-iq-Y1U">
+                                            <rect key="frame" x="127" y="43" width="88" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TotalClasses" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K7H-A1-owZ">
+                                            <rect key="frame" x="215" y="44" width="97" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="lblPercentage" destination="fsK-iq-Y1U" id="1zg-KA-Gcu"/>
+                                    <outlet property="lblSubjectCode" destination="dBf-DM-39k" id="AmH-t6-pbm"/>
+                                    <outlet property="lblTotalClass" destination="K7H-A1-owZ" id="NVe-fo-WYi"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HeaderCell" rowHeight="63" id="lN8-ec-tCl" customClass="HistoryHeaderCellTableViewCell" customModule="Apptendance" customModuleProvider="target">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lN8-ec-tCl" id="PwQ-z2-B0L">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Intake" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ups-Dr-1v1">
+                                            <rect key="frame" x="8" y="1" width="304" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="lblIntake" destination="Ups-Dr-1v1" id="86k-rA-S2A"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="krV-p8-2MU" id="8xK-kL-hjG"/>
+                            <outlet property="delegate" destination="krV-p8-2MU" id="PGc-E9-khH"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="History" image="clock-32.png" id="M8G-ZX-Gf0"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="CrZ-ub-RGS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4nv-al-D1C" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1462" y="1697"/>
+            <point key="canvasLocation" x="1512" y="1552"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="rOA-SC-LsH">

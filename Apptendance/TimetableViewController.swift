@@ -13,7 +13,6 @@ class TimetableViewController: PFQueryTableViewController, UITextFieldDelegate{
     override func viewDidLoad()
     {
         self.navigationController?.navigationBar.translucent = false //to avoid the table view cover by the navigation bar
-        self.navigationController?.navigationBar.topItem?.title = "Timetable"
         super.viewDidLoad()
         var timetable = PFQuery(className: "Timetable")
         var timetableArray:NSMutableArray = []
@@ -26,6 +25,11 @@ class TimetableViewController: PFQueryTableViewController, UITextFieldDelegate{
                 }
             }
         }
+    }
+    
+    override func viewDidAppear(animated: Bool)
+    {
+        self.navigationController?.navigationBar.topItem?.title = "Timetable"
     }
     
     override init(style: UITableViewStyle, className: String!)

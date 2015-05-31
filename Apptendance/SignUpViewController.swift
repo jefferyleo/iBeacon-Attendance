@@ -55,12 +55,13 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
                             for object in objects! as [AnyObject]
                             {
                                 var intakeCode = object["Intake"] as? String
-                                if !self.pickerString.containsObject(object["Intake"] as! String) {
+                                if !self.pickerString.containsObject(object["Intake"] as! String)
+                                {
                                     self.pickerString.addObject(object["Intake"] as! String)
     
+                                }
                             }
-                        }
-                        self.pvIntakeCode.reloadAllComponents()
+                            self.pvIntakeCode.reloadAllComponents()
                         }
                         else
                         {

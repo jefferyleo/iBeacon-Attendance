@@ -71,7 +71,7 @@ class HomeViewController: UIViewController, ESTBeaconManagerDelegate, CLLocation
         let major:CLBeaconMajorValue = UInt16(2)
         let minor:CLBeaconMinorValue = UInt16(59287)
         //set this beacon is belong to which class
-        let beaconRegion = CLBeaconRegion (proximityUUID: NSUUID(UUIDString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D"), major: CLBeaconMajorValue(), minor: CLBeaconMinorValue(), identifier: "G-2:ROOM-7")
+        let beaconRegion = CLBeaconRegion (proximityUUID: NSUUID(UUIDString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D"), major: CLBeaconMajorValue(), minor: CLBeaconMinorValue(), identifier: "LAB L3 - 04")
         manager.startRangingBeaconsInRegion(beaconRegion)
         manager.startUpdatingLocation()
         lblClassStatus.text = "You are in the class"
@@ -88,19 +88,25 @@ class HomeViewController: UIViewController, ESTBeaconManagerDelegate, CLLocation
             var query = PFQuery(className: "Timetable")
             
             //TESTING
-//            query.whereKey("Intake", equalTo: CustomFunction.getCurrentIntake())
-//            query.whereKey("Day", equalTo: CustomFunction.getDayDate())
-//            query.whereKey("Time", containsString: "13:45")
-//            query.whereKey("Room", equalTo: beaconRegion.identifier)
             query.whereKey("Intake", equalTo: CustomFunction.getCurrentIntake())
-            query.whereKey("Day", equalTo: CustomFunction.getDayDate())
+            query.whereKey("Day", equalTo: "MON 01-06-2015")
+            query.whereKey("Time", containsString: "08:30")
             query.whereKey("Room", equalTo: beaconRegion.identifier)
+            //query.whereKey("Intake", equalTo: CustomFunction.getCurrentIntake())
+            //query.whereKey("Day", equalTo: CustomFunction.getDayDate())
+            //query.whereKey("Room", equalTo: beaconRegion.identifier)
             //TESTING
             query.findObjectsInBackgroundWithBlock //query the Timetable to get the subject that are having now
                 {
                     (objects:[AnyObject]?, error:NSError?) -> Void in
                     if error == nil
                     {
+                        
+                        //if the person have no class on today, this check by querying the table whether got object inside or not
+                        if objects?.count == 0
+                        {
+                            self.lblAttendance.text = "You have no class now."
+                        }
                         for object in objects! as [AnyObject]
                         {
                             //get the Current subject
@@ -110,55 +116,67 @@ class HomeViewController: UIViewController, ESTBeaconManagerDelegate, CLLocation
                             //get the current class time
                             timeArray.addObject(object["Time"] as! NSString)
                             time = timeArray[0] as! String
-                            var frontTime:String
-                            var endTime:String
-                            var separateTime = split(time, maxSplit: 1, allowEmptySlices: false,
-                                isSeparator: { $0 == "-"})
-                            frontTime = separateTime[0].stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
-                            endTime = separateTime[1].stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
                             
-                            //convert the date from String to NSDate
-                            var dateFormatter = NSDateFormatter()
-                            dateFormatter.dateFormat = "HH:mm"
-                            var newFrontTime = dateFormatter.dateFromString(frontTime)
-                            var newEndTime = dateFormatter.dateFromString(endTime)
-                            var currentTime = dateFormatter.dateFromString(CustomFunction.getCurrentTime())
-//                            var currentTime = dateFormatter.dateFromString("14:00")
-                            
-                            //compare the current time with the time in timetable
-                            let frontResult = newFrontTime?.compare(currentTime!)
-                            let endResult = newEndTime?.compare(currentTime!)
-                            if frontResult == NSComparisonResult.OrderedAscending && endResult == NSComparisonResult.OrderedDescending
+                            if subjectCodeArray.count == 1 && timeArray.count == 1
                             {
-                                //send data to the database as attendance
-                                var attendance = PFObject(className: "Attendance")
-                                attendance["Username"] = CustomFunction.getUsername()
-                                attendance["IntakeCode"] = CustomFunction.getCurrentIntake()
-                                attendance["SubjectCode"] = subjectCode
-                                attendance["Date"] = CustomFunction.getDayDate()
-                                attendance["Time"] = time
-                                attendance.saveInBackgroundWithBlock({ (success:Bool, error:NSError?) -> Void in
-                                    if(success) //student data update successfully into attendance
-                                    {
-                                        self.lblAttendance.text = "Your Attendance has been taken!"
-                                        self.lblAttendance.textColor = UIColor.greenColor()
-                                        self.sendLocationNotificationMessage("Your Attendance has been taken!", playSound: true)
-                                    }
-                                    else //fail to save the student attendance
-                                    {
-                                        self.lblAttendance.text = "Failed to get attendance."
-                                        self.lblAttendance.textColor = UIColor.redColor()
-                                        self.sendLocationNotificationMessage("Failed to get attendance.", playSound: true)
-                                    }
-                                })
+                                var frontTime:String
+                                var endTime:String
+                                var separateTime = split(time, maxSplit: 1, allowEmptySlices: false,
+                                    isSeparator: { $0 == "-"})
+                                frontTime = separateTime[0].stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+                                endTime = separateTime[1].stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+                                
+                                //convert the date from String to NSDate
+                                var dateFormatter = NSDateFormatter()
+                                dateFormatter.dateFormat = "HH:mm"
+                                var newFrontTime = dateFormatter.dateFromString(frontTime)
+                                var newEndTime = dateFormatter.dateFromString(endTime)
+                                //var currentTime = dateFormatter.dateFromString(CustomFunction.getCurrentTime())
+                                var currentTime = dateFormatter.dateFromString("08:30") //for testing purpose
+                                
+                                //compare the current time with the time in timetable
+                                let frontResult = newFrontTime?.compare(currentTime!)
+                                let endResult = newEndTime?.compare(currentTime!)
+                                if frontResult == NSComparisonResult.OrderedAscending && endResult == NSComparisonResult.OrderedDescending || frontResult == NSComparisonResult.OrderedSame || endResult == NSComparisonResult.OrderedSame
+                                {
+                                    //send data to the database as attendance
+                                    var attendance = PFObject(className: "Attendance")
+                                    attendance["Username"] = CustomFunction.getUsername()
+                                    attendance["IntakeCode"] = CustomFunction.getCurrentIntake()
+                                    attendance["SubjectCode"] = subjectCode
+                                    attendance["Date"] = CustomFunction.getDayDate()
+                                    attendance["Time"] = time
+                                    attendance.saveInBackgroundWithBlock({ (success:Bool, error:NSError?) -> Void in
+                                        if(success) //student data update successfully into attendance
+                                        {
+                                            self.lblAttendance.text = "Your Attendance has been taken!"
+                                            self.lblAttendance.textColor = UIColor.greenColor()
+                                            self.sendLocationNotificationMessage("Your Attendance has been taken!", playSound: true)
+                                        }
+                                        else //fail to save the student attendance
+                                        {
+                                            self.lblAttendance.text = "Failed to get attendance."
+                                            self.lblAttendance.textColor = UIColor.redColor()
+                                            self.sendLocationNotificationMessage("Failed to get attendance.", playSound: true)
+                                        }
+                                    })
+                                }
+                                else //the class is not in between the time
+                                {
+                                    self.lblAttendance.text = "But you have no class currently."
+                                    self.lblAttendance.textColor = UIColor.redColor()
+                                    self.sendLocationNotificationMessage("You have no class currently", playSound: true)
+                                }
                             }
-                            else //the class is not in between the time
+                            else
                             {
-                                self.lblAttendance.text = "But you have no class currently."
-                                self.lblAttendance.textColor = UIColor.redColor()
-                                self.sendLocationNotificationMessage("You have no class currently", playSound: true)
+                                self.lblAttendance.text = "You have no class now."
                             }
                         }
+                    }
+                    else
+                    {
+                        self.lblAttendance.text = "You have no class now."
                     }
                 }
         }
