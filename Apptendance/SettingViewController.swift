@@ -57,8 +57,8 @@ class SettingViewController: UITableViewController, UITableViewDelegate, UITable
         }
         else if cell?.reuseIdentifier == "Twitter"
         {
-            if  SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter){
-                
+            if  SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter)
+            {
                 var tweetSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
                 tweetSheet.setInitialText("Apptendance is Awesome!")
                 self.presentViewController(tweetSheet, animated: true, completion: nil)

@@ -94,24 +94,32 @@ class HistoryTableViewController: PFQueryTableViewController {
         attendanceCount.findObjectsInBackgroundWithBlock { (objects:[AnyObject]?, error:NSError?) -> Void in
             if error == nil
             {
+//                var attendanceCountArray:NSMutableArray = []
+//                for object in objects! as [AnyObject]
+//                {
+//                    attendanceCountArray.removeAllObjects()
+//                    attendanceCountArray.addObject(object)
+//                    //attendanceCountArray.addObject(object["SubjectCode"] as! String)
+//                    println()
+//                    var total:Int = 0
+//                    cell.lblTotalClass.text = "\(total) / 24"
+//                }
+//                println(attendanceCountArray.count)
                 var attendanceCountArray:NSMutableArray = []
+                attendanceCountArray.removeAllObjects()
                 for object in objects! as [AnyObject]
                 {
-                    attendanceCountArray.removeAllObjects()
                     attendanceCountArray.addObject(object)
                     //attendanceCountArray.addObject(object["SubjectCode"] as! String)
-                    println(attendanceCountArray.count)
-                    println(object["SubjectCode"] as! String)
-                    var total:Int = 0
-                    cell.lblTotalClass.text = "\(total) / 24"
                 }
+                cell.lblTotalClass.text = "\(attendanceCountArray.count) / 24"
                 println(attendanceCountArray.count)
             }
         }
-//        var percentage:Double = 0
-//        let totalClass:Int? = cell.lblTotalClass.text?.toInt()
-//        percentage = Double((totalClass! / 24) * 100)
-//        cell.lblPercentage.text = "\(percentage)"
+        //var percentage:Double? = 0
+        //let totalClass:Int? = cell.lblTotalClass.text?.toInt()
+        //let percentage = Double((cell.lblTotalClass.text!.toInt()! / 24) * 100)
+        //cell.lblPercentage.text = "\(percentage) %"
         
         return cell
     }

@@ -88,13 +88,13 @@ class HomeViewController: UIViewController, ESTBeaconManagerDelegate, CLLocation
             var query = PFQuery(className: "Timetable")
             
             //TESTING
+//            query.whereKey("Intake", equalTo: CustomFunction.getCurrentIntake())
+//            query.whereKey("Day", equalTo: "MON 01-06-2015")
+//            query.whereKey("Time", containsString: "08:30")
+//            query.whereKey("Room", equalTo: beaconRegion.identifier)
             query.whereKey("Intake", equalTo: CustomFunction.getCurrentIntake())
-            query.whereKey("Day", equalTo: "MON 01-06-2015")
-            query.whereKey("Time", containsString: "08:30")
+            query.whereKey("Day", equalTo: CustomFunction.getDayDate())
             query.whereKey("Room", equalTo: beaconRegion.identifier)
-            //query.whereKey("Intake", equalTo: CustomFunction.getCurrentIntake())
-            //query.whereKey("Day", equalTo: CustomFunction.getDayDate())
-            //query.whereKey("Room", equalTo: beaconRegion.identifier)
             //TESTING
             query.findObjectsInBackgroundWithBlock //query the Timetable to get the subject that are having now
                 {
@@ -131,8 +131,8 @@ class HomeViewController: UIViewController, ESTBeaconManagerDelegate, CLLocation
                                 dateFormatter.dateFormat = "HH:mm"
                                 var newFrontTime = dateFormatter.dateFromString(frontTime)
                                 var newEndTime = dateFormatter.dateFromString(endTime)
-                                //var currentTime = dateFormatter.dateFromString(CustomFunction.getCurrentTime())
-                                var currentTime = dateFormatter.dateFromString("08:30") //for testing purpose
+                                var currentTime = dateFormatter.dateFromString(CustomFunction.getCurrentTime())
+                                //var currentTime = dateFormatter.dateFromString("08:30") //for testing purpose
                                 
                                 //compare the current time with the time in timetable
                                 let frontResult = newFrontTime?.compare(currentTime!)

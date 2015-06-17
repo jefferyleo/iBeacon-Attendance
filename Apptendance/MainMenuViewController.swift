@@ -42,6 +42,16 @@ class MainMenuViewController: UITabBarController, UIAlertViewDelegate {
             //self.presentViewController(LoginViewController(), animated: true, completion: nil)
         }
     }
+    
+    @IBAction func unwindSegue(segue: UIStoryboardSegue) {
+        if segue.identifier == "gotoLogout"
+        {
+            var alertView = UIAlertView(title: "Logout", message: "Are you sure you want to logout?", delegate: self, cancelButtonTitle: "Cancel")
+            alertView.addButtonWithTitle("Sure")
+            alertView.show()
+            //self.performSegueWithIdentifier("gotoLogout", sender: self)
+        }
+    }
     /*
     // MARK: - Navigation
 

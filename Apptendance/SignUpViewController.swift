@@ -107,7 +107,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
         UIView.commitAnimations()
     }
     
-    @IBAction func btnCreateAccount(sendfder: AnyObject)
+    @IBAction func btnCreateAccount(sender: AnyObject)
     {
         if txtUsername.text.isEmpty && txtPassword.text.isEmpty && txtEmail.text.isEmpty && txtIntake.text.isEmpty
         {
