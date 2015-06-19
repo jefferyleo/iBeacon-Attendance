@@ -17,7 +17,8 @@ class HomeViewController: UIViewController, ESTBeaconManagerDelegate, CLLocation
     let major:CLBeaconMajorValue = UInt16(2)
     let minor:CLBeaconMinorValue = UInt16(59287)
     //set this beacon is belong to which class
-    let beaconRegion = CLBeaconRegion (proximityUUID: NSUUID(UUIDString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D"), major: CLBeaconMajorValue(), minor: CLBeaconMinorValue(), identifier: "LAB-2")
+    //let beaconRegion = CLBeaconRegion (proximityUUID: NSUUID(UUIDString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D"), major: CLBeaconMajorValue(), minor: CLBeaconMinorValue(), identifier: "LAB-2")
+    let beaconRegion = CLBeaconRegion (proximityUUID: NSUUID(UUIDString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D"), identifier: "LAB-2")
     let beacon = CLBeacon()
     
     @IBOutlet weak var lblClassStatus: UILabel!
@@ -40,9 +41,12 @@ class HomeViewController: UIViewController, ESTBeaconManagerDelegate, CLLocation
             locationManager.requestAlwaysAuthorization()
         }
         bluetooth = CBPeripheralManager(delegate: self, queue: nil, options: nil)
+        
+        //update beacon region and location
         locationManager.startMonitoringForRegion(beaconRegion)
         locationManager.startRangingBeaconsInRegion(beaconRegion)
         locationManager.startUpdatingLocation()
+        
         lblClassStatus.text = "Finding Classroom..."
         lblAttendance.text = "Waiting to take Attendance"
         activityIndicator.startAnimating()
@@ -63,15 +67,15 @@ class HomeViewController: UIViewController, ESTBeaconManagerDelegate, CLLocation
         // Pass the selected object to the new view controller.
     }
     */
-    
+
     func locationManager(manager: CLLocationManager!,
         didEnterRegion region: CLRegion!)
     {
-        
         let major:CLBeaconMajorValue = UInt16(2)
         let minor:CLBeaconMinorValue = UInt16(59287)
         //set this beacon is belong to which class
-        let beaconRegion = CLBeaconRegion (proximityUUID: NSUUID(UUIDString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D"), major: CLBeaconMajorValue(), minor: CLBeaconMinorValue(), identifier: "LAB L3 - 04")
+        //let beaconRegion = CLBeaconRegion (proximityUUID: NSUUID(UUIDString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D"), major: CLBeaconMajorValue(), minor: CLBeaconMinorValue(), identifier: "LAB-2")
+        let beaconRegion = CLBeaconRegion (proximityUUID: NSUUID(UUIDString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D"), identifier: "LAB-2")
         manager.startRangingBeaconsInRegion(beaconRegion)
         manager.startUpdatingLocation()
         lblClassStatus.text = "You are in the class"
