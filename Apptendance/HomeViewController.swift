@@ -51,6 +51,11 @@ class HomeViewController: UIViewController, ESTBeaconManagerDelegate, CLLocation
         lblAttendance.text = "Waiting to take Attendance"
         activityIndicator.startAnimating()
     }
+    
+    override func viewDidAppear(animated: Bool)
+    {
+        self.navigationController?.navigationBar.topItem?.title = "Attendance"
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

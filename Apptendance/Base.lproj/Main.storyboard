@@ -63,19 +63,19 @@
                                     <action selector="btnSignIn:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Mlh-FU-N2E"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Account? Click " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bph-gZ-HlU">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="No Account? Click " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bph-gZ-HlU">
                                 <rect key="frame" x="27" y="390" width="133" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="to Sign Up." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ikA-qF-ueC">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="to Sign Up." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ikA-qF-ueC">
                                 <rect key="frame" x="210" y="390" width="78" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5e6-m0-rxy">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5e6-m0-rxy">
                                 <rect key="frame" x="148" y="377" width="69" height="43"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="69" id="nSb-Av-j6u"/>
@@ -96,12 +96,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remember me" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="blc-84-RPL">
-                                <rect key="frame" x="72" y="344" width="113" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bTL-wr-bFR">
                                 <rect key="frame" x="0.0" y="524" width="320" height="44"/>
                                 <constraints>
@@ -123,9 +117,6 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="2uS-Wv-acx">
-                                <rect key="frame" x="188" y="339" width="51" height="31"/>
-                            </switch>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -134,11 +125,7 @@
                             <constraint firstItem="8HL-oQ-VgV" firstAttribute="top" secondItem="UpE-Bd-e9R" secondAttribute="bottom" constant="8" symbolic="YES" id="1rM-TP-gbd"/>
                             <constraint firstAttribute="trailingMargin" secondItem="1hg-tp-y1G" secondAttribute="trailing" constant="78" id="6qY-Ex-ZSe"/>
                             <constraint firstItem="c0X-YC-Tfb" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="70" id="7ls-cD-Cp6"/>
-                            <constraint firstItem="2uS-Wv-acx" firstAttribute="centerY" secondItem="blc-84-RPL" secondAttribute="centerY" id="9OS-ig-tIf"/>
-                            <constraint firstItem="5e6-m0-rxy" firstAttribute="top" secondItem="2uS-Wv-acx" secondAttribute="bottom" constant="7" id="Biy-kG-El8"/>
                             <constraint firstItem="UpE-Bd-e9R" firstAttribute="centerX" secondItem="bTL-wr-bFR" secondAttribute="centerX" id="CvM-bJ-ZSW"/>
-                            <constraint firstItem="blc-84-RPL" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="56" id="EGy-fF-DEb"/>
-                            <constraint firstItem="blc-84-RPL" firstAttribute="top" secondItem="8HL-oQ-VgV" secondAttribute="bottom" constant="4" id="Hyb-f2-Ghg"/>
                             <constraint firstAttribute="trailingMargin" secondItem="5e6-m0-rxy" secondAttribute="trailing" constant="87" id="JLc-5A-W2m"/>
                             <constraint firstItem="ikA-qF-ueC" firstAttribute="baseline" secondItem="5e6-m0-rxy" secondAttribute="baseline" id="LjN-Ar-b27"/>
                             <constraint firstItem="c0X-YC-Tfb" firstAttribute="trailing" secondItem="UpE-Bd-e9R" secondAttribute="trailing" id="SPz-m2-UH1"/>
@@ -151,7 +138,6 @@
                             <constraint firstItem="ReP-mC-jPz" firstAttribute="top" secondItem="1hg-tp-y1G" secondAttribute="bottom" constant="2" id="cae-6k-eqh"/>
                             <constraint firstItem="UpE-Bd-e9R" firstAttribute="top" secondItem="c0X-YC-Tfb" secondAttribute="bottom" constant="9" id="d7L-s6-SOG"/>
                             <constraint firstItem="UpE-Bd-e9R" firstAttribute="leading" secondItem="c0X-YC-Tfb" secondAttribute="leading" id="daA-r8-AHQ"/>
-                            <constraint firstItem="ikA-qF-ueC" firstAttribute="top" secondItem="2uS-Wv-acx" secondAttribute="bottom" constant="20" id="evL-j0-lYM"/>
                             <constraint firstItem="ikA-qF-ueC" firstAttribute="leading" secondItem="Bph-gZ-HlU" secondAttribute="trailing" constant="50" id="f77-F5-FpO"/>
                             <constraint firstItem="ReP-mC-jPz" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-8" id="gsJ-SS-aEg"/>
                             <constraint firstItem="bTL-wr-bFR" firstAttribute="bottom" secondItem="jL1-uU-zsD" secondAttribute="top" id="h8v-b7-3JH"/>
@@ -159,13 +145,11 @@
                             <constraint firstItem="c0X-YC-Tfb" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="ov4-Ja-Wrr"/>
                             <constraint firstItem="ikA-qF-ueC" firstAttribute="baseline" secondItem="5e6-m0-rxy" secondAttribute="firstBaseline" id="poT-5H-UO1"/>
                             <constraint firstItem="bTL-wr-bFR" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="rOQ-2j-Wpp"/>
-                            <constraint firstItem="2uS-Wv-acx" firstAttribute="leading" secondItem="blc-84-RPL" secondAttribute="trailing" constant="3" id="tnA-Ht-7LY"/>
                             <constraint firstItem="1hg-tp-y1G" firstAttribute="top" secondItem="Ffj-Cd-VKc" secondAttribute="bottom" constant="83" id="vV0-fH-9UL"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Apptendance" id="7Tx-wU-h8b"/>
                     <connections>
-                        <outlet property="switchRemember" destination="2uS-Wv-acx" id="Fvr-Vy-B11"/>
                         <outlet property="txtPassword" destination="UpE-Bd-e9R" id="bWP-Ck-BU3"/>
                         <outlet property="txtUsername" destination="c0X-YC-Tfb" id="C7o-uF-ELw"/>
                         <segue destination="Ogg-12-xVc" kind="push" identifier="gotoLogin" id="uOP-eW-5PM"/>
@@ -187,15 +171,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WgI-Ug-4Jn">
-                                <rect key="frame" x="105" y="447" width="111" height="54"/>
-                                <state key="normal" title="Create Account">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="btnCreateAccount:" destination="llx-ep-LA4" eventType="touchUpInside" id="gTk-f7-FuV"/>
-                                </connections>
-                            </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kq8-IZ-YJr">
                                 <rect key="frame" x="87" y="114" width="149" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -229,11 +204,19 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WgI-Ug-4Jn">
+                                <rect key="frame" x="105" y="464" width="111" height="54"/>
+                                <state key="normal" title="Create Account">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnCreateAccount:" destination="llx-ep-LA4" eventType="touchUpInside" id="gTk-f7-FuV"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="u5F-kW-8BB" firstAttribute="leading" secondItem="RDY-3Q-Gzl" secondAttribute="leadingMargin" constant="71" id="1CY-ge-BSW"/>
-                            <constraint firstItem="WgI-Ug-4Jn" firstAttribute="leading" secondItem="RDY-3Q-Gzl" secondAttribute="leadingMargin" constant="89" id="1y2-Dx-9h0"/>
                             <constraint firstItem="paH-SJ-hHZ" firstAttribute="leading" secondItem="RDY-3Q-Gzl" secondAttribute="leadingMargin" constant="77" id="3R3-T0-se3"/>
                             <constraint firstAttribute="trailingMargin" secondItem="nic-QR-q3K" secondAttribute="trailing" constant="68" id="4km-DV-Q91"/>
                             <constraint firstItem="nic-QR-q3K" firstAttribute="top" secondItem="2bb-4W-eMm" secondAttribute="bottom" constant="8" id="5RG-Au-hpj"/>
@@ -241,9 +224,7 @@
                             <constraint firstItem="nic-QR-q3K" firstAttribute="leading" secondItem="RDY-3Q-Gzl" secondAttribute="leadingMargin" constant="71" id="6ty-zv-DoO"/>
                             <constraint firstAttribute="trailingMargin" secondItem="I5R-Va-j4a" secondAttribute="trailing" constant="-16" id="9Og-Qo-iUw"/>
                             <constraint firstItem="u5F-kW-8BB" firstAttribute="top" secondItem="nic-QR-q3K" secondAttribute="bottom" constant="5" id="9dM-Ny-Uxj"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="WgI-Ug-4Jn" secondAttribute="trailing" constant="88" id="AM6-Mj-x8Q"/>
                             <constraint firstItem="I5R-Va-j4a" firstAttribute="top" secondItem="u5F-kW-8BB" secondAttribute="bottom" constant="8" id="DTo-5h-glB"/>
-                            <constraint firstItem="WgI-Ug-4Jn" firstAttribute="top" secondItem="I5R-Va-j4a" secondAttribute="bottom" constant="8" id="Eh0-zb-H2E"/>
                             <constraint firstAttribute="trailingMargin" secondItem="2bb-4W-eMm" secondAttribute="trailing" constant="68" id="M94-35-obt"/>
                             <constraint firstItem="kq8-IZ-YJr" firstAttribute="leading" secondItem="RDY-3Q-Gzl" secondAttribute="leadingMargin" constant="71" id="MGO-Iz-eQI"/>
                             <constraint firstItem="u5F-kW-8BB" firstAttribute="height" secondItem="kq8-IZ-YJr" secondAttribute="height" id="Ohc-lH-Ieu"/>
@@ -256,7 +237,6 @@
                             <constraint firstItem="paH-SJ-hHZ" firstAttribute="top" secondItem="c9o-PW-soq" secondAttribute="bottom" constant="14" id="huq-wb-lza"/>
                             <constraint firstItem="2bb-4W-eMm" firstAttribute="top" secondItem="kq8-IZ-YJr" secondAttribute="bottom" constant="8" id="jOn-J8-Lbj"/>
                             <constraint firstAttribute="trailingMargin" secondItem="kq8-IZ-YJr" secondAttribute="trailing" constant="68" id="q0v-LD-zmi"/>
-                            <constraint firstItem="C14-GA-vXW" firstAttribute="top" secondItem="WgI-Ug-4Jn" secondAttribute="bottom" constant="81" id="qIT-cu-9Ff"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Sign Up" id="IQm-9M-jN8"/>
@@ -287,6 +267,26 @@
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="  Copyright (c) 2015 jeffery leo. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="LUU-cI-VA5">
                                 <rect key="frame" x="19" y="536" width="282" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="JefferyLeo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lHb-QV-TtJ">
+                                <rect key="frame" x="0.0" y="110" width="320" height="38"/>
+                                <color key="backgroundColor" red="0.22764130090000001" green="0.75968147500000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tj1-5d-ico">
+                                <rect key="frame" x="0.0" y="176" width="320" height="241"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <mutableString key="text">APPTENDANCE is an attendance system which it provides the best attendance services for the students to use it in the university.  APPTENDANCE is an iBeacon based technology to allow students to take attendance in the university with their smartphone by using the bluetooth which is the radio frequency identification.</mutableString>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Developer" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NNp-md-j58">
+                                <rect key="frame" x="121" y="81" width="78" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -392,7 +392,7 @@
             </objects>
             <point key="canvasLocation" x="1512" y="176"/>
         </scene>
-        <!--Legacy Agreement Controller-->
+        <!--Policy Statement-->
         <scene sceneID="RWK-Os-pAg">
             <objects>
                 <viewController id="Fo8-4O-A1V" customClass="LegacyAgreementController" customModule="Apptendance" customModuleProvider="target" sceneMemberID="viewController">
@@ -404,10 +404,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="TESTING......." translatesAutoresizingMaskIntoConstraints="NO" id="Amh-OU-oLT">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Amh-OU-oLT">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
+                                <mutableString key="text">The purpose of this policy is to outline the Asia Pacific University attendance standards. The developer would like to improve the attendance system and hope that Apptendance is the main attendance system in the Asia Pacific University. Every students is an needed to try out this attendance system so that the Apptendance is able to accomplish their goals and objectives.  To ensure the effectiveness and efficiency operations of the attendance and provide the best attendance system in Asia Pacific University, the developer expects the students in Asia Pacific University is giving some feedback or bug report to the developer to keep enhance the Apptendance to a better attendance system among all the university.</mutableString>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <connections>
@@ -417,11 +418,52 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="faG-my-oAK"/>
+                    <navigationItem key="navigationItem" title="Policy Statement" id="faG-my-oAK"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tgI-Jc-AqC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="505" y="1143"/>
+        </scene>
+        <!--About-->
+        <scene sceneID="ue9-Tq-bPh">
+            <objects>
+                <viewController id="j6j-Hr-vdm" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="k18-13-Vnc"/>
+                        <viewControllerLayoutGuide type="bottom" id="vXa-ve-h9d"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="MPF-du-AlP">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Developer" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TcO-OF-i2D">
+                                <rect key="frame" x="121" y="105" width="78" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="JefferyLeo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7gF-Ql-KkD">
+                                <rect key="frame" x="0.0" y="134" width="320" height="38"/>
+                                <color key="backgroundColor" red="0.22764130090000001" green="0.75968147500000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="btu-Df-hjI">
+                                <rect key="frame" x="0.0" y="200" width="320" height="241"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <mutableString key="text">APPTENDANCE is an attendance system which it provides the best attendance services for the students to use it in the university.  APPTENDANCE is an iBeacon based technology to allow students to take attendance in the university with their smartphone by using the bluetooth which is the radio frequency identification.</mutableString>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="About" id="vCg-28-Vev"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KtH-6X-ymT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="505" y="1867"/>
         </scene>
         <!--Feedback View Controller-->
         <scene sceneID="v81-Y4-AFF">
@@ -458,8 +500,8 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="K8F-Mq-Mj3" id="mDc-gm-fHh">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Legacy Agreement" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ccU-rs-Ich">
-                                                    <rect key="frame" x="8" y="11" width="144" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Policy Statement" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ccU-rs-Ich">
+                                                    <rect key="frame" x="8" y="11" width="131" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -483,6 +525,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="j6j-Hr-vdm" kind="push" id="PsY-su-uCY"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="zOX-U7-mQy">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -553,25 +598,6 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Twitter" translatesAutoresizingMaskIntoConstraints="NO" id="hMr-Ly-SvS">
                                                     <rect key="frame" x="8" y="3" width="34" height="35"/>
                                                 </imageView>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection id="qeh-WY-TYu">
-                                <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Whv-Sd-U3z">
-                                        <rect key="frame" x="0.0" y="377" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Whv-Sd-U3z" id="s89-44-heh">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Log Out" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XRz-h4-cDO">
-                                                    <rect key="frame" x="129" y="11" width="62" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.22764130090000001" green="0.75968147500000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>

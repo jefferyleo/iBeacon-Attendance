@@ -18,6 +18,11 @@ class SettingViewController: UITableViewController, UITableViewDelegate, UITable
         self.navigationController?.navigationBar.topItem?.title = "Settings"
     }
     
+    override func viewDidAppear(animated: Bool)
+    {
+        self.navigationController?.navigationBar.topItem?.title = "Settings"
+    }
+    
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
         let cell = tableView.cellForRowAtIndexPath(indexPath)
