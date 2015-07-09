@@ -33,15 +33,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate, PFLogInViewCon
     @IBAction func btnSignIn(sender: AnyObject)
     {
         self.DismissKeyboard()
-        if (txtUsername.text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()).isEmpty || txtPassword.text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()).isEmpty)
+        if (txtUsername.text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()).uppercaseString.isEmpty || txtPassword.text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()).isEmpty)
         {
             let alertView = UIAlertView(title: "Error", message: "Cannot blank", delegate: self, cancelButtonTitle: "OK")
             alertView.show()
         }
-        else if (txtUsername.text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()) != "" && txtPassword.text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()) != "")
+        else if (txtUsername.text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()).uppercaseString != "" && txtPassword.text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()) != "")
         {
             SwiftSpinner.show("Signing In...", animated: true)
-            PFUser.logInWithUsernameInBackground(txtUsername.text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()), password: txtPassword.text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()), block: { (user:PFUser?, error:NSError?) -> Void in
+            PFUser.logInWithUsernameInBackground(txtUsername.text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()).uppercaseString, password: txtPassword.text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()), block: { (user:PFUser?, error:NSError?) -> Void in
                 if(error != nil)
                 {
                     SwiftSpinner.hide()

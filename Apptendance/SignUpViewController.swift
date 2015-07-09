@@ -120,7 +120,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
             SwiftSpinner.show("Signing Up...", animated: true)
             var user = PFUser()
             
-            user.username = txtUsername.text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+            user.username = txtUsername.text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()).uppercaseString
             user.password = txtPassword.text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
             user.email = txtEmail.text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
             user.setObject(txtIntake.text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()), forKey: "IntakeCode")
@@ -166,6 +166,10 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
                             break
                         case 209:
                             var alertView = UIAlertView(title: "Invalid Session.", message: "Reopen the application.", delegate: self, cancelButtonTitle: "OK")
+                            alertView.show()
+                            break
+                        case 125:
+                            var alertView = UIAlertView(title: "Invalid Email Address.", message: "Fill in the correct email.", delegate: self, cancelButtonTitle: "OK")
                             alertView.show()
                             break
                         default:

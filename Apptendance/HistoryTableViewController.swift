@@ -138,9 +138,11 @@ class HistoryTableViewController: PFQueryTableViewController {
                     {
                         self.attendanceArray.addObject(object["SubjectCode"] as! String)
                     }
+                    //self.attendanceArray.addObject(object["SubjectCode"] as! String)
                 }
             }
         }
+        println(self.attendanceArray.count)
         return self.attendanceArray.count
     }
     
